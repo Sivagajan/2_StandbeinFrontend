@@ -6,6 +6,8 @@ const Dashboard = () => {
     return (
 
         <>
+
+        <h2>hallo</h2>
             <AllProductsWindow />
             <AllOrderWindow/>
         

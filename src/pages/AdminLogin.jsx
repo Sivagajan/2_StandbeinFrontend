@@ -4,23 +4,23 @@ import LoginForm from "../components/LoginForm"
 
 const AdminLogin = () =>{
 
-    const [email, setEmail] = useState('')
-    const [pass, setPass] = useState('')
+    const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
     const nav = useNavigate()
 
     const login = async () => {
-        const result = await fetch('http://localhost:9898/admin/', {
+        const result = await fetch('http://localhost:9898/admin', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify({ email, pass })
+            body: JSON.stringify({ username, password })
         })
         if (result.status === 200) {
             const data = await result.json()
 
             localStorage.setItem('token', data.token)
-            nav('/home')
+            nav('/admin/dashboard')
         }
 
 
@@ -28,8 +28,8 @@ const AdminLogin = () =>{
     return (
         <main className="">
             <div className="">
-                <div className=""><p>CustomerBoard</p></div>
-                <LoginForm login={login} setemail={setEmail} setpass={setPass} />
+                <div className=""><p>DashBoard</p></div>
+                <LoginForm login={login} setusername={setUsername} setpassword={setPassword} />
             </div>
 
         </main>

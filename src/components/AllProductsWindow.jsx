@@ -10,7 +10,9 @@ const AllProductsWindow = () => {
         let result = null
 
         const fetchdata = async () => {
-            result = await fetch('http://localhost:9898/admin/product')
+            result = await fetch('http://localhost:9898/admin/product', {headers: {
+                Authentication: 'Bearer ' + localStorage.getItem('token')
+            }})
 
             if(result.status === 200){
                 const data = await result.json()
