@@ -23,13 +23,13 @@ const AllOrderWindow = () => {
 
 
     return(
-        <section>
+        <article className="orderWindow">
             {order.map((item, key) => {
                 return(
                     <OrderItem key={key} date={item.date}  orderid={item._id}/>
                 )
             })}
-        </section>
+        </article>
     )
 }
 

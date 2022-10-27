@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import AddProduct from "./AddProduct"
 import ProductItem from './ProductItem'
 
 const AllProductsWindow = () => {
@@ -25,14 +26,16 @@ const AllProductsWindow = () => {
     },[])
 
     return(
-        <section>
-            {product.map((item, key) => {
-
-                return(
+        <>
+            <article className="productWindow">
+                {product.map((item, key) => {
                     
-                    < ProductItem key={key}image={item.image} title={item.title} size={item.size} price={item.price}/>
-                )})}
-        </section>
+                    return(
+                        
+                        < ProductItem key={key}image={item.image} title={item.title} size={item.size} price={item.price}/>
+                        )})}
+            </article>
+        </>
     )
 }
 

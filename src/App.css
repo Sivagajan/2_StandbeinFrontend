@@ -6,8 +6,39 @@
   height: 20vh;
   width: 30vw;
   display: flex;
+  padding: 20px;
+  border: 2px solid black;
+  border-radius: 20px;
 }
 
 .productImage{
   height: 100%;
+}
+
+.dashboardSection{
+  display: flex;
+}
+
+.orderWindow{
+  width: 50vw;
+  border: 5px dotted black;
+  border-radius: 20px;
+}
+.productWindow{
+  width: 50vw;
+  border: 5px dotted black;
+  border-radius: 20px;
+}
+
+.orderArticle{
+  height: 20vh;
+  width: 30vw;
+  display: flex;
+  padding: 20px;
+  border: 2px solid black;
+  border-radius: 20px;
+}
+
+.navButton{
+  cursor: pointer;
 }

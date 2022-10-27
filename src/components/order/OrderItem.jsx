@@ -2,7 +2,7 @@ const OrderItem = (props) => {
     console.log(props.date)
 
     return(
-        <article>
+        <article className="orderArticle">
             <p>{props.orderid}</p>
             <p>{props.date}</p>
         </article>
