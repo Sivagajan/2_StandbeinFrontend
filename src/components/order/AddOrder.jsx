@@ -5,10 +5,10 @@ const AddOrder = () => {
     const [state, setState] = useState(false)
     const [price, setPrice] = useState('')
     const [customer, setCustomer] = useState('')
-    const [product, setProduct] = useState([])
+    const [product, setProduct] = useState('')
 
 
-    const add = () => {
+    const add = async () => {
 
         const order = {
             "date":date,
@@ -18,12 +18,33 @@ const AddOrder = () => {
             "product":product
         }
 
-        console.log(order)
+        console.log('we want to ad a order',order)
+
+        const response = await fetch('http://localhost:9898/admin/addorder', {
+            method: 'POST',
+            headers:{
+                'content-type': 'application/json',
+                'authentication':'Bearer ' + localStorage.getItem('token') 
+            },
+            body:JSON.stringify(order)
+        })
+
+        const data = await response.json()
+
+        if(data.state) {
+            setDate('')
+            setState('')
+            setPrice('')
+            setCustomer('')
+            setProduct('')
+        }
+        
+
     }
 
     return(
         <section>
-            <h1>Add product</h1>
+            <h1>Add Order</h1>
 
             <input onChange={(e) => { setDate(e.target.value) }} type="text" placeholder="Date" />
             <input type="checkbox" onChange={(e) => { setState(e.target.checked) }} />

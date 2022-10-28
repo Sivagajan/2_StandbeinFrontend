@@ -26,7 +26,7 @@ const AddProduct = () => {
         setBase64(event.target.result)
     }
 
-    const add = () => {
+    const add = async () => {
         const product = {
             "brand": brand,
             "title": title,
@@ -39,9 +39,33 @@ const AddProduct = () => {
             "variation":variation
         }
 
-        console.log(product)
+        console.log('wir wollen ein neues Produkt einpflegen',product)
 
+        const response = await fetch('http://localhost:9898/admin/addproduct', {
+            method: 'POST',
+            headers:{
+                'content-type': 'application/json',
+                'authentication':'Bearer ' + localStorage.getItem('token') 
+            },
+            body:JSON.stringify(product)
+        })
+
+        const data = await response.json()
+
+        if(data.state) {
+            setBase64('')
+            setBrand('')
+            setCategory('')
+            setDescription('')
+            setTitle('')
+            setPrice('')
+            setSize('')
+            setStock('')
+            setVariation('')
+        }
     }
+
+
 
     return(
         <article>
